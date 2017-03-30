@@ -6,21 +6,31 @@
 		
 		<script type="text/javascript">
 		function arvuta(){
-			var letihind=parseFloat(document.getElementById("letihind").value);
-			var km=letihind*20/120; // km=Math.round(km*100)/100; //ümardus 2 kohta pärast koma.
-			km=km.toFixed(2);
-			document.getElementById("vastus").innerHTML=km;	
-		}
-		function tereTore() {
-			console.log("Tere tere vana kere!");
+			var val1=parseFloat(document.getElementById("eur").value);
+			var kurss = 1.1;
+			var komisjon = 0.1;
+
+			//var km=letihind*20/120; // km=Math.round(km*100)/100; //ümardus 2 kohta pärast koma.
+			//km=km.toFixed(2);
+			var val2 = val1*kurss;
+			var komisjonitasu = val2*komisjon;
+			var kokku = val2 + komisjonitasu;
+			kokku=kokku.toFixed(2);
+
+			//var vastus = kokku;
+			var vastus = val2.toFixed(2) + " + " + komisjonitasu.toFixed(2) + " = " + kokku;
+
+			document.getElementById("vastus").innerHTML=vastus;	
 		}
 		</script>
 	</head>
 	<body>
 		<h1>Katsetuste leht</h1>
-		Palun sisesta letihind:
-		<input type="text" id="letihind" />
+		Kurss 1EUR = 1.1USD, komisjon 10% summast<br/><br/>
+		EUR to USD:
+		<input type="text" id="eur" />
 		<input type="button" value="OK" onclick="arvuta();" />
+		<br/><br/>
 		<div id="vastus">
 		Vastuse koht.
 		</div>
