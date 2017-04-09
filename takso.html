@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Käibemaksu arvutus</title>
+		<title>Taksohinna arvutus</title>
 		<meta charset="UTF-8" />
 		
 		<script type="text/javascript">
 		function arvuta(){
-			var vahemaa=parseFloat(document.getElementById("vahemaa").value);
+			var vahemaa = parseFloat(document.getElementById("vahemaa").value);
+			var soiduAlustamine = parseFloat(document.getElementById("soiduAlustamine").value);
+			var kilomeetriHind = parseFloat(document.getElementById("kilomeetriHind").value);
+			var hind = soiduAlustamine + (vahemaa * kilomeetriHind);
+			hind=hind.toFixed(2);
 
-			var vastus = "Sõiduhind ??? EUR";
+			var vastus = "Sõiduhind vahemaaga " + vahemaa + " kilomeetrit on kokku " + hind + " EUR";
 
 			document.getElementById("vastus").innerHTML=vastus;	
 		}
@@ -16,11 +20,14 @@
 	</head>
 	<body>
 		<h1>Taksohinna kalkulaator</h1>
-		<input type="text" id="vahemaa" />
+		Sisseastumistasu (EUR) <input type="number" id="soiduAlustamine" value="2.1" /><br>
+		Kilomeetrihind (EUR) <input type="number" id="kilomeetriHind" value="0.38" /><br><br>
+		Sisesta sõidetud kilomeetrite arv!<br><br>
+		<input type="number" id="vahemaa" value="10" />
 		<input type="button" value="OK" onclick="arvuta();" />
 		<br/><br/>
 		<div id="vastus">
-		Vastuse koht.
+		<!--Vastuse koht.-->
 		</div>
 	</body>
 </html>
