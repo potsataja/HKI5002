@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Käibemaksu arvutus</title>
+		<meta charset="UTF-8" />
+		
+		<script type="text/javascript">
+		function arvuta(){
+			var vahemaa=parseFloat(document.getElementById("vahemaa").value);
+
+			var vastus = "Sõiduhind ??? EUR";
+
+			document.getElementById("vastus").innerHTML=vastus;	
+		}
+		</script>
+	</head>
+	<body>
+		<h1>Taksohinna kalkulaator</h1>
+		<input type="text" id="vahemaa" />
+		<input type="button" value="OK" onclick="arvuta();" />
+		<br/><br/>
+		<div id="vastus">
+		Vastuse koht.
+		</div>
+	</body>
+</html>
