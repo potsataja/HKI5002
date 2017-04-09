@@ -5,23 +5,73 @@
 		<meta charset="UTF-8" />
 		
 		<script type="text/javascript">
-		function arvuta(){
+		var seisund = "paev";
+
+		function arvuta() {
 			var vahemaa = parseFloat(document.getElementById("vahemaa").value);
 			var soiduAlustamine = parseFloat(document.getElementById("soiduAlustamine").value);
-			var kilomeetriHind = parseFloat(document.getElementById("kilomeetriHind").value);
-			var hind = soiduAlustamine + (vahemaa * kilomeetriHind);
+			var kilomeetriHindPaeval = parseFloat(document.getElementById("kilomeetriHindPaeval").value);
+			var kilomeetriHindOosel = parseFloat(document.getElementById("kilomeetriHindOosel").value);
+
+			var aeg = "";
+			var hind = soiduAlustamine;
+
+			if(seisund == "paev") {
+				aeg = "päevasel ajal";
+				hind += (vahemaa * kilomeetriHindPaeval);
+			}
+
+			if(seisund == "oo") {
+				aeg = "öisel ajal";
+				hind += (vahemaa * kilomeetriHindOosel);
+			}
+			
 			hind=hind.toFixed(2);
 
-			var vastus = "Sõiduhind vahemaaga " + vahemaa + " kilomeetrit on kokku " + hind + " EUR";
+			var vastus = "Sõiduhind vahemaaga " + vahemaa + " kilomeetrit " + aeg + " on kokku " + hind + " EUR";
 
 			document.getElementById("vastus").innerHTML=vastus;	
 		}
+
+		function ooHind() {
+			seisund = "oo";
+			arvuta();
+			joonista();
+		}
+
+		function paevaHind() {
+			seisund = "paev";
+			arvuta();
+			joonista();
+		}
+
+		function joonista() {
+			//var g=document.getElementById("tahvel").getContext("2d");
+			var canvas = document.getElementById("tahvel");
+			var ctx = canvas.getContext("2d");
+			ctx.font = "40px Comic Sans MS";
+			ctx.fillStyle = "red";
+			ctx.textAlign = "center";
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+			if(seisund == "paev") {
+				ctx.fillText("Päev", canvas.width/2, canvas.height/2+12);
+			}
+
+			if(seisund == "oo") {
+				ctx.fillText("Öö", canvas.width/2, canvas.height/2+12);
+			}
+		}
 		</script>
 	</head>
-	<body>
-		<h1>Taksohinna kalkulaator</h1>
+	<body onload="joonista();">
+		<h1>Taksohinna kalkulaator v2</h1>
+		<canvas id="tahvel" width="200" height="50" style="background-color:yellow"></canvas><br />
+		<input type="button" value="Öö" onclick="ooHind()" />
+		<input type="button" value="Päev" onclick="paevaHind()" /><br><br>
 		Sisseastumistasu (EUR) <input type="number" id="soiduAlustamine" value="2.1" /><br>
-		Kilomeetrihind (EUR) <input type="number" id="kilomeetriHind" value="0.38" /><br><br>
+		Kilomeetrihind päeval (EUR) <input type="number" id="kilomeetriHindPaeval" value="0.38" /><br>
+		Kilomeetrihind öösel (EUR) <input type="number" id="kilomeetriHindOosel" value="0.48" /><br><br>
 		Sisesta sõidetud kilomeetrite arv!<br><br>
 		<input type="number" id="vahemaa" value="10" />
 		<input type="button" value="OK" onclick="arvuta();" />
