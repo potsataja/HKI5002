@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+	<title>Kalkulaator ringi pindala leidmiseks raadiuse järgi</title>
+	<script>
+		function arvuta(){
+			var raadius=parseFloat(document.getElementById("kast1").value);
+			document.getElementById("vastus").innerHTML=raadius*raadius*Math.PI;
+		}
+	</script>
+</head>
+<body>
+	<h1>Ringi pindala arvutamine</h1>
+	Ringi raadius:
+	<input type="text" id="kast1" />
+	<input type="button" value="Arvuta ringi pindala" onClick="arvuta();" />
+	<div id="vastus"></div>
+</body>
+</html>
