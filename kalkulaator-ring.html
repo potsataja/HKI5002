@@ -3,17 +3,25 @@
 <head>
 	<title>Kalkulaator ringi pindala leidmiseks raadiuse järgi</title>
 	<script>
-		function arvuta(){
-			var raadius=parseFloat(document.getElementById("kast1").value);
-			document.getElementById("vastus").innerHTML=raadius*raadius*Math.PI;
+		function Arvutaja(){
+			this.kast=document.getElementById("kast1");
+			this.vastusekiht=document.getElementById("vastus");
+			this.arvuta=function(){
+				this.vastusekiht.innerHTML=Math.pow(parseFloat(this.kast.value),2)*Math.PI;
+			}
 		}
+
+		var a1;
+		function lehealgus(){
+			a1=new Arvutaja();
+		}		
 	</script>
 </head>
-<body>
+<body onload="lehealgus();">
 	<h1>Ringi pindala arvutamine</h1>
 	Ringi raadius:
 	<input type="text" id="kast1" />
-	<input type="button" value="Arvuta ringi pindala" onClick="arvuta();" />
+	<input type="button" value="Arvuta ringi pindala" onClick="a1.arvuta();" />
 	<div id="vastus"></div>
 </body>
 </html>
