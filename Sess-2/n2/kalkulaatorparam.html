@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Kalkulaatorite parameetrid</title>
+    <script src="calculator.js"></script>
+
+    <script>
+        function onPageLoad() {
+            new Calculator("kiht1", "Eurod", "Dollariteks", 1.3);
+            new Calculator("kiht2", "Tollid", "Sentimeetriteks", 2.54);
+            new Calculator("kiht3", "Letihind", "Käibemaks", 0.2);
+        }
+    </script>
+</head>
+
+<body onload="onPageLoad();">
+    <h1>Arvutamine</h1>
+    <div id="kiht1"></div>
+    <div id="kiht2"></div>
+    <div id="kiht3"></div>
+</body>
+
+</html>
