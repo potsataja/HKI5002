@@ -11,10 +11,11 @@
                 window[kihinimi + "_ladu"] = this;
                 
                 this.kiht.innerHTML =
-                    "<input type='number' id='" + kihinimi + "_intervall' value='1' style='width: 50px' />" +
+                    "<input type='number' id='" + kihinimi + "_intervall' value='1' style='width: 50px' /> " +
                     "<input type='button' value='&lt;' onClick='" + kihinimi + "_ladu.v2iksemaks();' /> " +
                     "<input type='text' id='" + kihinimi + "_vastus' style='width: 50px' disabled />" +
-                    "<input type='button' value='&gt;' onClick='" + kihinimi + "_ladu.suuremaks();' /> ";
+                    "<input type='button' value='&gt;' onClick='" + kihinimi + "_ladu.suuremaks();' /> " +
+                    "<input type='button' value='Nulli' onClick='" + kihinimi + "_ladu.nulli();' /> ";
                 
                 this.vastusekiht = document.getElementById(kihinimi + "_vastus");
                 this.kuva();
@@ -30,6 +31,11 @@
             this.suuremaks = function () {
                 //this.kogus++;
                 this.kogus += parseInt(document.getElementById(kihinimi + "_intervall").value);
+                this.kuva();
+            }
+            this.nulli = function () {
+                //this.kogus++;
+                this.kogus = 0;
                 this.kuva();
             }
             this.algus();
