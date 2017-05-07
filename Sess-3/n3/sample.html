@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Foor</title>
+    <meta charset="UTF-8">
+    <script src="foor.js"></script>
+    <script src="lamp.js"></script>
+    <script>
+        function leheAlgus() {
+            var f1 = new Foor();
+            var f2 = new Foor();
+
+            f1.muudaTuli("kollane");
+            f2.muudaTuli("punane");
+            document.getElementById("vastus").innerHTML =
+                "esimene: " + f1.kysiTuli() +
+                ", teine: " + f2.kysiTuli();
+            
+            var l1 = new Lamp();
+            document.getElementById("vastus2").innerHTML = l1.kasSees();
+            console.log(l1.seisundTekstina());
+            //l1.uusSeisund(false);
+            l1.vahetaSeisund();
+            console.log(l1.kasSees());
+            console.log(l1.seisundTekstina());
+        }
+    </script>
+</head>
+
+<body onload="leheAlgus()">
+    <div id="vastus"></div>
+    <div id="vastus2"></div>
+</body>
+
+</html>
