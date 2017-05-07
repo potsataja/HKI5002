@@ -5,21 +5,25 @@ class Lamp {
         window[kihinimi + "_lamp"] = this;
 
         this.kiht.innerHTML =
-            "<p>" + kihinimi + ": "
-            + "<input type='button' value='Vaheta' "
-            + " onClick='" + kihinimi + "_lamp.vahetaSeisund();' />"
-            + "<input type='button' value='Küsi' "
-            + " onClick='" + kihinimi + "_lamp.näitaSeisund();' /></p>";
+            "<p>" + kihinimi + ": <input type='button' value='Vaheta' " +
+            " onClick='" + kihinimi + "_lamp.vahetaSeisund();' /><br/>"
+            + "<canvas id='" + kihinimi + "_joonis' " +
+            "width='100' height='70' " +
+            "style='background-color: yellow' ></canvas><br />"
+            + "</p>";
 
         this.vastusekiht = document.getElementById(kihinimi + "_vastus");
+        this.joonis = document.getElementById(kihinimi + "_joonis");
         this.kihinimi = kihinimi;
+
+        this.kuva();
     }
 
     kasSees() {
         return this.seisund;
     }
 
-    uusSeisund(asend) {
+    /*uusSeisund(asend) {
         this.seisund = asend;
     }
 
@@ -33,7 +37,7 @@ class Lamp {
         else {
             return "viga";
         }
-    }
+    }*/
 
     vahetaSeisund() {
         if (this.seisund) {
@@ -46,10 +50,30 @@ class Lamp {
             //return "viga";
         }
 
-        //console.log(this.kihinimi + ": " + this.seisundTekstina());
+        this.kuva();
     }
 
-    näitaSeisund() {
+    /*näitaSeisund() {
         console.log(this.kihinimi + ": " + this.seisundTekstina());
+    }*/
+
+    kuva() {
+        var g = this.joonis.getContext("2d");
+
+        g.fillStyle = "white";
+        g.fillRect(0, 0, 100, 100);
+
+        g.lineWidth = 3;
+        g.strokeStyle = "blue";
+        g.fillStyle = "blue";
+        g.beginPath();
+        g.arc(50, 35, 20, 0, 2 * Math.PI, true);
+
+        if (this.kasSees()) {
+            g.fill();
+        }
+        else {
+            g.stroke();
+        }
     }
 }
