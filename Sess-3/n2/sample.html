@@ -8,9 +8,12 @@
     <script>
         function leheAlgus() {
             var f1 = new Foor();
-            console.log(f1.kysiTuli());
+            var f2 = new Foor();
             f1.muudaTuli("kollane");
-            document.getElementById("vastus").innerHTML = f1.kysiTuli();
+            f2.muudaTuli("punane");
+            document.getElementById("vastus").innerHTML =
+                "esimene: " + f1.kysiTuli() +
+                ", teine: " + f2.kysiTuli();
         }
     </script>
 </head>
