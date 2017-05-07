@@ -8,29 +8,21 @@
     <script src="lamp.js"></script>
     <script>
         function leheAlgus() {
-            var f1 = new Foor();
-            var f2 = new Foor();
+            var l1 = new Lamp("l1");
+            var l2 = new Lamp("l2");
+            var l3 = new Lamp("l3");
 
-            f1.muudaTuli("kollane");
-            f2.muudaTuli("punane");
-            document.getElementById("vastus").innerHTML =
-                "esimene: " + f1.kysiTuli() +
-                ", teine: " + f2.kysiTuli();
-            
-            var l1 = new Lamp();
-            document.getElementById("vastus2").innerHTML = l1.kasSees();
-            console.log(l1.seisundTekstina());
-            //l1.uusSeisund(false);
-            l1.vahetaSeisund();
-            console.log(l1.kasSees());
-            console.log(l1.seisundTekstina());
+            //console.log("l1: " + l1.seisundTekstina());
+            //console.log("l2: " + l2.seisundTekstina());
+            //console.log("l3: " + l3.seisundTekstina());
         }
     </script>
 </head>
 
 <body onload="leheAlgus()">
-    <div id="vastus"></div>
-    <div id="vastus2"></div>
+    <div id="l1"></div>
+    <div id="l2"></div>
+    <div id="l3"></div>
 </body>
 
 </html>
