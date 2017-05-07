@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Foor</title>
+    <meta charset="UTF-8">
+    <script src="foor.js"></script>
+    <script>
+        function leheAlgus() {
+            var f1 = new Foor();
+            console.log(f1.kysiTuli());
+            f1.muudaTuli("kollane");
+            document.getElementById("vastus").innerHTML = f1.kysiTuli();
+        }
+    </script>
+</head>
+
+<body onload="leheAlgus()">
+    <div id="vastus"></div>
+</body>
+
+</html>
