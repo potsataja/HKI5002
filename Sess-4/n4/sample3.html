@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Veebiühendus</title>
+    <meta charset="utf-8">
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = andmedSaabusid;
+        
+        function loeVeebist() {
+            xhr.open("POST", "tervitus2.php", true);
+            xhr.setRequestHeader(
+                "Content-type", "application/x-www-form-urlencoded");
+            xhr.send(
+                "eesnimi=" + encodeURI(document.getElementById("eesnimi").value) +
+                "&perekonnanimi=" +
+                encodeURI(document.getElementById("perekonnanimi").value));
+        }
+
+        function andmedSaabusid() {
+            if (xhr.readyState == 4) {
+                document.getElementById("kiht1").innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="kiht1"></div>
+    Eesnimi:
+    <input type="text" id="eesnimi" /> Perekonnanimi:
+    <input type="text" id="perekonnanimi" />
+    <input type="button" value="Tervita" onclick="loeVeebist()" />
+</body>
+
+</html>
