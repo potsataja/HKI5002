@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Veebiühendus</title>
+    <meta charset="utf-8">
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = andmedSaabusid;
+        
+        function loeVeebist() {
+            //meetod GET, fail teade.txt, asünkroonne (tagaplaanil)=jah
+            xhr.open("GET", "teade.txt", true);
+            xhr.send();
+        }
+
+        function andmedSaabusid() {
+            if (xhr.readyState == 4) { //staadium 4, andmed kohal
+                document.getElementById("kiht1").innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="kiht1"></div>
+    <input type="button" value="Loe" onclick="loeVeebist()" />
+</body>
+
+</html>
