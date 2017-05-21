@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+    <title>Uudiste ülesanne</title>
+    <meta charset="UTF-8">
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = andmedSaabusid;
+
+        function loeVeebist() {
+            xhr.open("POST", "show-news.php", true);
+            xhr.setRequestHeader(
+                "Content-type", "application/x-www-form-urlencoded");
+            xhr.send(
+                "uudis=" + encodeURI(document.getElementById("uudis").value));
+        }
+
+        function andmedSaabusid() {
+            if (xhr.readyState == 4) {
+                document.getElementById("kiht1").innerHTML = xhr.responseText;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <select onchange="loeVeebist()" id="uudis">
+            <option value="">Vali uudis</option>
+            <option value="1">Uudis 1</option>
+            <option value="2">Uudis 2</option>
+            <option value="3">Uudis 3</option>
+        </select>
+    <br><br>
+    <div id="kiht1"></div>
+</body>
+
+</html>
