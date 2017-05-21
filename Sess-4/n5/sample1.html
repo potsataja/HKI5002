@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+    <title>Kellaaja ülesanne</title>
+    <meta charset="UTF-8">
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        function loeVeebist() {
+            xhr.open("GET", "show-time.php", false);
+            xhr.send();
+            document.getElementById("kiht1").innerHTML = xhr.responseText + "<br><br>";
+        }
+
+        function leheAlgus() {
+            setInterval(loeVeebist, 1000);
+        }
+    </script>
+</head>
+
+<body onload="leheAlgus()">
+    <div id="kiht1"></div>
+</body>
+
+</html>
