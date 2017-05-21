@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Veebiühendus</title>
+    <script>
+        var xhr = new XMLHttpRequest();
+        function loeVeebist() {
+            xhr.open("GET", "teade.txt", false);
+            xhr.send();
+            document.getElementById("kiht1").innerHTML = xhr.responseText;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="kiht1"></div>
+    <input type="button" value="Loe" onclick="loeVeebist()" />
+</body>
+
+</html>
