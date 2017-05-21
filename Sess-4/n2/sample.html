@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Veebiühendus</title>
+    <meta charset="utf-8">
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        function loeVeebist(teade) {
+            if (teade == 1) {
+                xhr.open("GET", "teade1.txt", false);
+            }
+            else if (teade == 2) {
+                xhr.open("GET", "teade2.txt", false);
+            }
+            else if (teade == 3) {
+                xhr.open("GET", "sample-page.php", false);
+            }
+
+            xhr.send();
+            document.getElementById("kiht1").innerHTML = xhr.responseText + "<br><br>";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="kiht1"></div>
+    <input type="button" value="Loe teade 1" onclick="loeVeebist(1)" />
+    <input type="button" value="Loe teade 2" onclick="loeVeebist(2)" />
+    <input type="button" value="Loe teade 3" onclick="loeVeebist(3)" />
+</body>
+
+</html>
